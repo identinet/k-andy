@@ -93,10 +93,9 @@ variable "server_additional_packages" {
 
 ## Server Access
 
-variable "ssh_private_key_location" {
-  description = "Use this private SSH key instead of generating a new one (Attention: Encrypted keys are not supported)"
-  default     = null
-  type        = string
+variable "ssh_keys" {
+  description = "List of public ssh_key ids"
+  type        = list(string)
 }
 
 ## Versions

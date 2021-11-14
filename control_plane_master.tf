@@ -5,7 +5,7 @@ resource "hcloud_server" "first_control_plane" {
   server_type = var.control_plane_server_type
   location    = var.server_locations[0]
 
-  ssh_keys = [hcloud_ssh_key.provision_public.id]
+  ssh_keys = var.ssh_keys
   labels = merge({
     node_type = "control-plane"
   }, local.common_labels)
@@ -35,10 +35,9 @@ resource "hcloud_server" "first_control_plane" {
     ]
 
     connection {
-      host        = self.ipv4_address
-      type        = "ssh"
-      user        = "root"
-      private_key = local.ssh_private_key
+      host = self.ipv4_address
+      type = "ssh"
+      user = "root"
     }
   }
 

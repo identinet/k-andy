@@ -24,10 +24,6 @@ variable "server_type" {
   default     = "cx21"
 }
 
-variable "provisioning_ssh_key_id" {
-  description = "ID of the hcloud SSH key to provision the node group with"
-}
-
 variable "control_plane_ip" {
   description = "Control plane IP to connect to"
 }
@@ -66,9 +62,11 @@ variable "ip_offset" {
 }
 
 
-variable "ssh_private_key" {
-  description = "SSH private key to connect directly to server (used for remote-exec)"
+variable "ssh_keys" {
+  description = "List of public ssh_key ids"
+  type        = list(string)
 }
+
 
 variable "common_labels" {
   description = "Additional labels to add to server instances"

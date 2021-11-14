@@ -6,7 +6,7 @@ resource "hcloud_server" "agent" {
   server_type = var.server_type
   location    = element(var.server_locations, each.value)
 
-  ssh_keys = [var.provisioning_ssh_key_id]
+  ssh_keys = var.ssh_keys
   labels = merge({
     node_type = "worker"
     cluster   = var.cluster_name
@@ -34,10 +34,9 @@ resource "hcloud_server" "agent" {
     ]
 
     connection {
-      host        = self.ipv4_address
-      type        = "ssh"
-      user        = "root"
-      private_key = var.ssh_private_key
+      host = self.ipv4_address
+      type = "ssh"
+      user = "root"
     }
   }
 }
@@ -68,9 +67,8 @@ resource "null_resource" "apply_taints" {
   }
 
   connection {
-    host        = var.public_control_plane_ip
-    type        = "ssh"
-    user        = "root"
-    private_key = var.ssh_private_key
+    host = var.public_control_plane_ip
+    type = "ssh"
+    user = "root"
   }
 }

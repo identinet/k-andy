@@ -1,9 +1,8 @@
 data "remotefile" "kubeconfig" {
   conn {
-    host        = hcloud_server.first_control_plane.ipv4_address
-    port        = 22
-    username    = "root"
-    private_key = local.ssh_private_key
+    host     = hcloud_server.first_control_plane.ipv4_address
+    port     = 22
+    username = "root"
   }
   path = "/etc/rancher/k3s/k3s.yaml"
 }
