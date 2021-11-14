@@ -1,6 +1,6 @@
 resource "hcloud_server" "control_plane" {
   for_each = { for i in range(1, var.control_plane_server_count) : "#${i}" => i }
-  name     = "${var.name}-control-plane-${each.value}"
+  name     = "${var.cluster_name}-control-plane-${each.value}"
 
   image       = data.hcloud_image.ubuntu.name
   server_type = var.control_plane_server_type

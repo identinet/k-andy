@@ -1,6 +1,6 @@
 resource "hcloud_network" "k3s" {
   count    = var.network_id == null ? 1 : 0
-  name     = "${var.name}-k3s-network"
+  name     = "${var.cluster_name}-k3s-network"
   ip_range = var.network_cidr
   labels   = local.common_labels
 }

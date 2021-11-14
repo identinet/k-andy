@@ -1,5 +1,5 @@
 resource "hcloud_server" "first_control_plane" {
-  name = "${var.name}-control-plane-0"
+  name = "${var.cluster_name}-control-plane-0"
 
   image       = data.hcloud_image.ubuntu.name
   server_type = var.control_plane_server_type

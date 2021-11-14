@@ -8,7 +8,7 @@ module "agent_group" {
 
   taints = each.value.taints
 
-  cluster_name = var.name
+  cluster_name = var.cluster_name
   group_name   = each.key
 
   server_locations = var.server_locations

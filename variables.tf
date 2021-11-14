@@ -6,7 +6,7 @@ variable "hcloud_token" {
 
 # Cluster Configuration
 
-variable "name" {
+variable "cluster_name" {
   description = "Cluster name (used in various places, don't use special chars)"
 }
 
@@ -16,7 +16,7 @@ variable "create_kubeconfig" {
 }
 
 variable "kubeconfig_filename" {
-  description = "Specify the filename of the created kubeconfig file (defaults to kubeconfig-$${var.name}.yaml"
+  description = "Specify the filename of the created kubeconfig file (defaults to kubeconfig-$${var.cluster_name}.yaml"
   default     = null
 }
 
@@ -137,7 +137,7 @@ variable "upgrade_node_additional_tolerations" {
 
 locals {
   common_labels = {
-    cluster     = var.name
+    cluster     = var.cluster_name
     provisioner = "terraform",
     module      = "k-andy"
     engine      = "k3s",
