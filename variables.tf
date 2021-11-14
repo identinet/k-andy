@@ -102,7 +102,7 @@ variable "ssh_private_key_location" {
 ## Versions
 
 variable "k3s_version" {
-  description = "K3s version"
+  description = "K3s version (See https://update.k3s.io/v1-release/channels)"
   default     = "v1.21.3+k3s1"
 }
 
@@ -123,7 +123,7 @@ variable "upgrade_controller_image_tag" {
 }
 
 variable "upgrade_k3s_target_version" {
-  description = "Target version of k3s (See https://github.com/k3s-io/k3s/releases)"
+  description = "Target version of k3s (See https://update.k3s.io/v1-release/channels)"
   type        = string
   default     = null
 }
